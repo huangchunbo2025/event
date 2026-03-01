@@ -27,12 +27,15 @@
 
     .page {
       width: 210mm;
-      min-height: 297mm;
+      height: 297mm;
+      max-height: 297mm;
       background: #fff;
       margin: 20px auto;
       position: relative;
       overflow: hidden;
       box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      page-break-after: always;
+      page-break-inside: avoid;
     }
 
     @media print {
@@ -43,6 +46,7 @@
         margin: 0;
         box-shadow: none;
         page-break-after: always;
+        page-break-inside: avoid;
       }
       .page:last-child {
         page-break-after: auto;
@@ -69,28 +73,28 @@
 
     /* Page 2: Invitation Letter */
     .letter-page {
-      padding: 25mm 25mm;
-      min-height: 297mm;
+      padding: 20mm 22mm;
+      height: 297mm;
       display: flex;
       flex-direction: column;
     }
 
     .letter-header {
       text-align: center;
-      margin-bottom: 15mm;
-      padding-bottom: 8mm;
+      margin-bottom: 10mm;
+      padding-bottom: 5mm;
       border-bottom: 2px solid #0a66ff;
     }
 
     .letter-header h1 {
-      font-size: 28px;
+      font-size: 24px;
       color: #051b44;
       letter-spacing: 0.05em;
-      margin-bottom: 4mm;
+      margin-bottom: 3mm;
     }
 
     .letter-header .subtitle {
-      font-size: 14px;
+      font-size: 12px;
       color: #0a66ff;
       text-transform: uppercase;
       letter-spacing: 0.1em;
@@ -98,18 +102,18 @@
 
     .letter-content {
       flex: 1;
-      font-size: 12pt;
-      line-height: 1.9;
+      font-size: 11pt;
+      line-height: 1.7;
       color: #2c3e50;
     }
 
     .letter-content p {
-      margin-bottom: 5mm;
+      margin-bottom: 4mm;
       text-align: justify;
     }
 
     .letter-content .greeting {
-      margin-bottom: 8mm;
+      margin-bottom: 5mm;
     }
 
     .letter-content .highlight {
@@ -118,108 +122,108 @@
     }
 
     .letter-signature {
-      margin-top: 12mm;
+      margin-top: 8mm;
       text-align: left;
     }
 
     .letter-signature .sign-off {
-      margin-bottom: 12mm;
+      margin-bottom: 8mm;
     }
 
     .letter-signature .name {
-      font-size: 16pt;
+      font-size: 14pt;
       font-weight: 700;
       color: #051b44;
     }
 
     .letter-signature .title {
-      font-size: 11pt;
+      font-size: 10pt;
       color: #555;
       margin-top: 2mm;
     }
 
     /* Page 3: About the Event */
     .content-page {
-      padding: 20mm 25mm;
-      min-height: 297mm;
+      padding: 15mm 20mm;
+      height: 297mm;
     }
 
     .page-title {
-      font-size: 24px;
+      font-size: 20px;
       color: #051b44;
-      margin-bottom: 8mm;
-      padding-bottom: 4mm;
-      border-bottom: 3px solid #0a66ff;
+      margin-bottom: 5mm;
+      padding-bottom: 3mm;
+      border-bottom: 2px solid #0a66ff;
     }
 
     .section {
-      margin-bottom: 10mm;
+      margin-bottom: 6mm;
     }
 
     .section h3 {
-      font-size: 14pt;
+      font-size: 12pt;
       color: #0a66ff;
-      margin-bottom: 4mm;
+      margin-bottom: 3mm;
     }
 
     .section p, .section li {
-      font-size: 11pt;
+      font-size: 10pt;
       color: #2c3e50;
-      line-height: 1.8;
+      line-height: 1.6;
     }
 
     .section ul {
-      padding-left: 6mm;
+      padding-left: 5mm;
     }
 
     .section li {
-      margin-bottom: 2mm;
+      margin-bottom: 1.5mm;
     }
 
     .info-box {
       background: linear-gradient(135deg, #f8faff 0%, #eef4ff 100%);
-      border-left: 4px solid #0a66ff;
-      padding: 5mm 6mm;
-      margin: 6mm 0;
+      border-left: 3px solid #0a66ff;
+      padding: 4mm 5mm;
+      margin: 4mm 0;
     }
 
     .info-box p {
       margin: 0;
-      font-size: 11pt;
+      font-size: 10pt;
     }
 
     .stats-row {
       display: flex;
-      gap: 5mm;
-      margin: 8mm 0;
+      gap: 4mm;
+      margin: 5mm 0;
     }
 
     .stat-item {
       flex: 1;
       text-align: center;
-      padding: 5mm;
+      padding: 4mm;
       background: #f8faff;
-      border-radius: 4mm;
+      border-radius: 3mm;
       border: 1px solid #d6e4ff;
     }
 
     .stat-number {
-      font-size: 20pt;
+      font-size: 18pt;
       font-weight: 700;
       color: #0a66ff;
     }
 
     .stat-label {
-      font-size: 9pt;
+      font-size: 8pt;
       color: #666;
-      margin-top: 2mm;
+      margin-top: 1mm;
     }
 
     /* Page 4: Agenda */
     .agenda-item {
       display: flex;
-      gap: 5mm;
-      padding: 4mm 0;
+      gap: 4mm;
+      padding: 3mm 0;
       border-bottom: 1px solid #e8e8e8;
     }
 
@@ -228,11 +232,11 @@
     }
 
     .agenda-time {
-      width: 28mm;
+      width: 26mm;
       flex-shrink: 0;
       font-weight: 700;
       color: #0a66ff;
-      font-size: 10pt;
+      font-size: 9pt;
     }
 
     .agenda-content {
@@ -242,70 +246,71 @@
     .agenda-content strong {
       display: block;
       color: #051b44;
-      font-size: 11pt;
-      margin-bottom: 1mm;
+      font-size: 10pt;
+      margin-bottom: 0.5mm;
     }
 
     .agenda-content p {
-      font-size: 10pt;
+      font-size: 9pt;
       color: #555;
       margin: 0;
+      line-height: 1.4;
     }
 
     .agenda-content .speaker {
-      font-size: 9pt;
+      font-size: 8pt;
       color: #0a66ff;
       font-style: italic;
     }
 
     .agenda-content .themes {
-      font-size: 9pt;
+      font-size: 8pt;
       color: #666;
-      margin-top: 1mm;
+      margin-top: 0.5mm;
     }
 
     /* Page 5: Venue */
     .venue-card {
       background: #f8faff;
       border: 1px solid #d6e4ff;
-      border-radius: 4mm;
-      padding: 6mm;
-      margin-bottom: 6mm;
+      border-radius: 3mm;
+      padding: 4mm;
+      margin-bottom: 4mm;
     }
 
     .venue-card h3 {
       color: #051b44;
-      font-size: 14pt;
-      margin-bottom: 3mm;
+      font-size: 12pt;
+      margin-bottom: 2mm;
     }
 
     .venue-card p {
-      font-size: 11pt;
+      font-size: 10pt;
       color: #2c3e50;
-      margin-bottom: 2mm;
+      margin-bottom: 1.5mm;
     }
 
     .map-placeholder {
       width: 100%;
-      height: 70mm;
+      height: 50mm;
       background: linear-gradient(135deg, #e8f0ff 0%, #d6e4ff 100%);
-      border-radius: 3mm;
+      border-radius: 2mm;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 5mm 0;
+      margin: 3mm 0;
       border: 1px solid #c0d4ff;
     }
 
     .map-placeholder span {
       color: #0a66ff;
-      font-size: 11pt;
+      font-size: 10pt;
     }
 
     .contact-info {
       display: flex;
-      gap: 8mm;
-      margin-top: 6mm;
+      gap: 6mm;
+      margin-top: 4mm;
     }
 
     .contact-item {
@@ -313,14 +318,14 @@
     }
 
     .contact-item .label {
-      font-size: 9pt;
+      font-size: 8pt;
       color: #888;
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
 
     .contact-item .value {
-      font-size: 11pt;
+      font-size: 10pt;
       color: #051b44;
       font-weight: 500;
       margin-top: 1mm;
@@ -587,14 +592,14 @@
       <p><strong>Time:</strong> Check-in at 9:00 AM, Session starts at 9:30 AM (SGT)</p>
     </div>
 
-    <div class="map-image-container" style="margin: 5mm 0;">
-      <img src="assets/singapore-map.png" alt="Microsoft Singapore Location Map" style="width: 100%; height: auto; border-radius: 3mm; border: 1px solid #c0d4ff;" />
+    <div class="map-image-container" style="margin: 3mm 0;">
+      <img src="assets/singapore-map.png" alt="Microsoft Singapore Location Map" style="width: 100%; max-height: 45mm; object-fit: cover; border-radius: 2mm; border: 1px solid #c0d4ff;" />
     </div>
 
     <div class="section">
       <h3>Getting There</h3>
       <ul>
-        <li><strong>By MRT:</strong> Tanjong Pagar Station (East-West Line) - 5 minute walk</li>
+        <li><strong>By MRT:</strong> Tanjong Pagar Station (East-West Line) - 5 min walk</li>
         <li><strong>By Taxi/Grab:</strong> Drop off at Frasers Tower, 182 Cecil Street</li>
         <li><strong>Parking:</strong> Available at Frasers Tower basement</li>
       </ul>
@@ -611,18 +616,18 @@
       </div>
     </div>
 
-    <div class="section" style="margin-top: 15mm;">
+    <div class="section" style="margin-top: 6mm;">
       <h3>Important Notes</h3>
       <ul>
-        <li>Please bring a valid photo ID for building security check-in</li>
+        <li>Please bring a valid photo ID for building security</li>
         <li>Business attire recommended</li>
-        <li>The session will be conducted in English</li>
-        <li>This is an invite-only event with limited seating</li>
+        <li>Session conducted in English</li>
+        <li>Invite-only event with limited seating</li>
       </ul>
     </div>
 
-    <div class="info-box" style="margin-top: 10mm;">
-      <p><strong>RSVP:</strong> Please confirm your attendance by March 10, 2026. For any questions or special requirements, contact us at business@socialhub.ai</p>
+    <div class="info-box" style="margin-top: 5mm;">
+      <p><strong>RSVP:</strong> Please confirm by March 10, 2026. Contact: business@socialhub.ai</p>
     </div>
   </div>
 
