@@ -20,7 +20,7 @@
       font-family: "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif;
       color: #1a1a2e;
       background: #f0f0f0;
-      line-height: 1.5;
+      line-height: 1.6;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
     }
@@ -50,7 +50,7 @@
       .no-print { display: none !important; }
     }
 
-    /* Cover */
+    /* Page 1: Cover */
     .cover {
       height: 297mm;
       display: flex;
@@ -58,212 +58,254 @@
       justify-content: center;
       padding: 0;
     }
+
     .cover-image {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
-    /* Bilingual layout */
-    .bilingual-page {
-      padding: 12mm 15mm;
+    /* Letter pages */
+    .letter-page {
+      padding: 20mm 22mm;
       height: 297mm;
       display: flex;
       flex-direction: column;
     }
 
-    .lang-section {
-      flex: 1;
-      padding: 3mm 0;
-    }
-
-    .lang-section.zh {
-      border-top: 1px solid #d6e4ff;
-      padding-top: 4mm;
-      margin-top: 2mm;
-    }
-
-    .lang-label {
-      font-size: 7pt;
-      color: #0a66ff;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 2mm;
-      font-weight: 600;
-    }
-
-    /* Letter page */
     .letter-header {
       text-align: center;
-      margin-bottom: 4mm;
-      padding-bottom: 3mm;
+      margin-bottom: 10mm;
+      padding-bottom: 5mm;
       border-bottom: 2px solid #0a66ff;
     }
+
     .letter-header h1 {
-      font-size: 18px;
+      font-size: 24px;
       color: #051b44;
-      margin-bottom: 1mm;
+      letter-spacing: 0.05em;
+      margin-bottom: 3mm;
     }
+
     .letter-header .subtitle {
-      font-size: 10px;
+      font-size: 12px;
       color: #0a66ff;
       text-transform: uppercase;
       letter-spacing: 0.1em;
     }
 
     .letter-content {
-      font-size: 9pt;
-      line-height: 1.5;
+      flex: 1;
+      font-size: 11pt;
+      line-height: 1.7;
       color: #2c3e50;
     }
+
     .letter-content p {
-      margin-bottom: 2mm;
+      margin-bottom: 4mm;
       text-align: justify;
     }
+
+    .letter-content .greeting {
+      margin-bottom: 5mm;
+    }
+
     .letter-content .highlight {
       color: #051b44;
       font-weight: 600;
     }
+
     .letter-signature {
-      margin-top: 3mm;
+      margin-top: 8mm;
+      text-align: left;
     }
+
+    .letter-signature .sign-off {
+      margin-bottom: 8mm;
+    }
+
     .letter-signature .name {
-      font-size: 11pt;
+      font-size: 14pt;
       font-weight: 700;
       color: #051b44;
     }
+
     .letter-signature .title {
-      font-size: 8pt;
+      font-size: 10pt;
       color: #555;
+      margin-top: 2mm;
     }
 
     /* Content pages */
+    .content-page {
+      padding: 15mm 20mm;
+      height: 297mm;
+    }
+
     .page-title {
-      font-size: 14px;
+      font-size: 20px;
       color: #051b44;
-      margin-bottom: 3mm;
-      padding-bottom: 2mm;
+      margin-bottom: 5mm;
+      padding-bottom: 3mm;
       border-bottom: 2px solid #0a66ff;
     }
 
     .section {
+      margin-bottom: 6mm;
+    }
+
+    .section h3 {
+      font-size: 12pt;
+      color: #0a66ff;
       margin-bottom: 3mm;
     }
-    .section h3 {
-      font-size: 10pt;
-      color: #0a66ff;
-      margin-bottom: 1.5mm;
-    }
+
     .section p, .section li {
-      font-size: 8pt;
+      font-size: 10pt;
       color: #2c3e50;
-      line-height: 1.45;
+      line-height: 1.6;
     }
+
     .section ul {
-      padding-left: 4mm;
+      padding-left: 5mm;
     }
+
     .section li {
-      margin-bottom: 1mm;
+      margin-bottom: 1.5mm;
     }
 
     .info-box {
-      background: #f8faff;
-      border-left: 2px solid #0a66ff;
-      padding: 2mm 3mm;
-      margin: 2mm 0;
+      background: linear-gradient(135deg, #f8faff 0%, #eef4ff 100%);
+      border-left: 3px solid #0a66ff;
+      padding: 4mm 5mm;
+      margin: 4mm 0;
     }
+
     .info-box p {
       margin: 0;
-      font-size: 8pt;
+      font-size: 10pt;
     }
 
     .stats-row {
       display: flex;
-      gap: 3mm;
-      margin: 3mm 0;
+      gap: 4mm;
+      margin: 5mm 0;
     }
+
     .stat-item {
       flex: 1;
       text-align: center;
-      padding: 2mm;
+      padding: 4mm;
       background: #f8faff;
-      border-radius: 2mm;
+      border-radius: 3mm;
       border: 1px solid #d6e4ff;
     }
+
     .stat-number {
-      font-size: 14pt;
+      font-size: 18pt;
       font-weight: 700;
       color: #0a66ff;
     }
+
     .stat-label {
-      font-size: 7pt;
+      font-size: 8pt;
       color: #666;
+      margin-top: 1mm;
     }
 
     /* Agenda */
     .agenda-item {
       display: flex;
-      gap: 3mm;
-      padding: 1.5mm 0;
-      border-bottom: 1px solid #eee;
+      gap: 4mm;
+      padding: 3mm 0;
+      border-bottom: 1px solid #e8e8e8;
     }
-    .agenda-item:last-child { border-bottom: none; }
+
+    .agenda-item:last-child {
+      border-bottom: none;
+    }
+
     .agenda-time {
-      width: 22mm;
+      width: 26mm;
       flex-shrink: 0;
       font-weight: 700;
       color: #0a66ff;
-      font-size: 8pt;
+      font-size: 9pt;
     }
+
     .agenda-content {
       flex: 1;
     }
+
     .agenda-content strong {
       display: block;
       color: #051b44;
-      font-size: 8pt;
+      font-size: 10pt;
+      margin-bottom: 0.5mm;
     }
+
     .agenda-content p {
-      font-size: 7pt;
+      font-size: 9pt;
       color: #555;
       margin: 0;
-      line-height: 1.3;
+      line-height: 1.4;
+    }
+
+    .agenda-content .speaker {
+      font-size: 8pt;
+      color: #0a66ff;
+      font-style: italic;
+    }
+
+    .agenda-content .themes {
+      font-size: 8pt;
+      color: #666;
+      margin-top: 0.5mm;
     }
 
     /* Venue */
     .venue-card {
       background: #f8faff;
       border: 1px solid #d6e4ff;
-      border-radius: 2mm;
-      padding: 3mm;
-      margin-bottom: 3mm;
+      border-radius: 3mm;
+      padding: 4mm;
+      margin-bottom: 4mm;
     }
+
     .venue-card h3 {
       color: #051b44;
-      font-size: 10pt;
-      margin-bottom: 1.5mm;
+      font-size: 12pt;
+      margin-bottom: 2mm;
     }
+
     .venue-card p {
-      font-size: 8pt;
+      font-size: 10pt;
       color: #2c3e50;
-      margin-bottom: 1mm;
+      margin-bottom: 1.5mm;
     }
 
     .contact-info {
       display: flex;
-      gap: 5mm;
-      margin-top: 2mm;
+      gap: 6mm;
+      margin-top: 4mm;
     }
-    .contact-item { flex: 1; }
+
+    .contact-item {
+      flex: 1;
+    }
+
     .contact-item .label {
-      font-size: 7pt;
+      font-size: 8pt;
       color: #888;
       text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
+
     .contact-item .value {
-      font-size: 9pt;
+      font-size: 10pt;
       color: #051b44;
       font-weight: 500;
+      margin-top: 1mm;
     }
 
     /* Back Cover */
@@ -278,39 +320,50 @@
       color: #fff;
       padding: 25mm;
     }
+
     .back-cover .logo-text {
       font-size: 32pt;
       font-weight: 700;
       margin-bottom: 5mm;
     }
-    .back-cover .logo-text span { color: #7eb8ff; }
+
+    .back-cover .logo-text span {
+      color: #7eb8ff;
+    }
+
     .back-cover .tagline {
       font-size: 14pt;
       color: #b8d4ff;
       margin-bottom: 20mm;
+      letter-spacing: 0.05em;
     }
+
     .back-cover .tour-info {
       font-size: 18pt;
       font-weight: 600;
       margin-bottom: 3mm;
     }
+
     .back-cover .tour-theme {
       font-size: 24pt;
       font-weight: 700;
       margin-bottom: 15mm;
       color: #7eb8ff;
     }
+
     .back-cover .divider {
       width: 60mm;
       height: 1px;
       background: rgba(255,255,255,0.3);
       margin: 10mm 0;
     }
+
     .back-cover .website {
       font-size: 12pt;
       color: #b8d4ff;
       margin-top: 15mm;
     }
+
     .back-cover .copyright {
       position: absolute;
       bottom: 15mm;
@@ -318,6 +371,7 @@
       color: rgba(255,255,255,0.5);
     }
 
+    /* Print button */
     .print-btn {
       position: fixed;
       top: 20px;
@@ -333,7 +387,10 @@
       box-shadow: 0 4px 12px rgba(10,102,255,0.3);
       z-index: 1000;
     }
-    .print-btn:hover { background: #0952cc; }
+
+    .print-btn:hover {
+      background: #0952cc;
+    }
   </style>
 </head>
 <body>
@@ -344,219 +401,439 @@
     <img class="cover-image" src="assets/invitation-cover-hk.png" alt="Socialhub.AI Global Tour Hong Kong" />
   </div>
 
-  <!-- Page 2: Invitation Letter (Bilingual) -->
-  <div class="page bilingual-page">
+  <!-- Page 2: Invitation Letter (English) -->
+  <div class="page letter-page">
     <div class="letter-header">
-      <h1>Invitation 邀請函</h1>
+      <h1>Invitation</h1>
       <div class="subtitle">Socialhub.AI Global Tour - Hong Kong</div>
     </div>
 
-    <div class="lang-section en">
-      <div class="lang-label">English</div>
-      <div class="letter-content">
-        <p>Dear Executive Leader,</p>
-        <p>It is my pleasure to invite you to an exclusive executive roundtable as part of the <span class="highlight">Socialhub.AI Global Tour</span>, taking place in Hong Kong on <span class="highlight">April 15, 2026</span>.</p>
-        <p>As artificial intelligence moves beyond experimentation and into the core of enterprise operations, a fundamental question emerges: <em>How do we transition from isolated pilots to production-grade AI infrastructure?</em></p>
-        <p>This is not a technology showcase. It is a closed-door conversation among senior leaders from retail and consumer industries who are actively navigating this transformation. Together, we will explore the structural shifts required in architecture, governance, and operating models to realize sustainable AI value.</p>
-        <p>The session is designed for candid peer exchange. With only <span class="highlight">12 seats</span> available, every participant brings a distinct perspective and a shared commitment to moving beyond experimentation.</p>
-        <p>I believe your experience and insights would add significant value to this dialogue. I sincerely hope you will join us.</p>
+    <div class="letter-content">
+      <p class="greeting">Dear Executive Leader,</p>
+
+      <p>It is my pleasure to invite you to an exclusive executive roundtable as part of the <span class="highlight">Socialhub.AI Global Tour</span>, taking place in Hong Kong on <span class="highlight">April 15, 2026</span>.</p>
+
+      <p>As artificial intelligence moves beyond experimentation and into the core of enterprise operations, a fundamental question emerges: <em>How do we transition from isolated pilots to production-grade AI infrastructure?</em></p>
+
+      <p>This is not a technology showcase. It is a closed-door conversation among senior leaders from retail and consumer industries who are actively navigating this transformation. Together, we will explore the structural shifts required in architecture, governance, and operating models to realize sustainable AI value.</p>
+
+      <p>The session is designed for candid peer exchange. With only <span class="highlight">12 seats</span> available, every participant brings a distinct perspective and a shared commitment to moving beyond experimentation.</p>
+
+      <p>We will gather at the <span class="highlight">Microsoft Hong Kong office</span> in Cyberport, bringing together practitioners from leading global brands to discuss:</p>
+
+      <p style="padding-left: 5mm;">
+        - How to transition from pilot projects to production-ready AI systems<br/>
+        - The evolution of loyalty architecture in an AI-native era
+      </p>
+
+      <p>I believe your experience and insights would add significant value to this dialogue. I sincerely hope you will join us.</p>
+
+      <p>Please feel free to reach out if you have any questions. I look forward to the opportunity to connect in Hong Kong.</p>
+    </div>
+
+    <div class="letter-signature">
+      <p class="sign-off">Warm regards,</p>
+      <p class="name">Chunbo Huang</p>
+      <p class="title">Founder & CEO, Socialhub.AI</p>
+    </div>
+  </div>
+
+  <!-- Page 3: Invitation Letter (繁體中文) -->
+  <div class="page letter-page">
+    <div class="letter-header">
+      <h1>邀請函</h1>
+      <div class="subtitle">Socialhub.AI 全球巡迴 - 香港站</div>
+    </div>
+
+    <div class="letter-content">
+      <p class="greeting">尊敬的企業領袖：</p>
+
+      <p>誠摯邀請您參加 <span class="highlight">Socialhub.AI 全球巡迴</span>系列活動中的高管圓桌會議，將於<span class="highlight">2026年4月15日</span>在香港舉行。</p>
+
+      <p>隨著人工智能從實驗階段進入企業運營的核心，一個根本性的問題浮現：<em>我們如何將孤立的試點項目轉化為生產級的AI基礎設施？</em></p>
+
+      <p>這不是一場技術展示會，而是零售和消費行業高管之間的閉門對話。與會者正在積極推動企業轉型，我們將共同探討實現可持續AI價值所需的架構、治理和運營模式變革。</p>
+
+      <p>本次會議專為坦誠的同儕交流而設計。僅設<span class="highlight">12個席位</span>，每位參與者都將帶來獨特的視角，並共同承諾超越實驗階段。</p>
+
+      <p>我們將在<span class="highlight">微軟香港辦公室</span>（數碼港）匯聚來自全球領先品牌的實踐者，共同探討：</p>
+
+      <p style="padding-left: 5mm;">
+        - 如何將試點項目轉化為生產就緒的AI系統<br/>
+        - AI原生時代的忠誠度架構演進
+      </p>
+
+      <p>我相信您的經驗和見解將為這次對話增添重要價值。誠摯期待您的蒞臨。</p>
+
+      <p>如有任何問題，歡迎隨時與我們聯繫。期待在香港與您相見。</p>
+    </div>
+
+    <div class="letter-signature">
+      <p class="sign-off">此致敬禮</p>
+      <p class="name">黃春波</p>
+      <p class="title">Socialhub.AI 創辦人兼首席執行官</p>
+    </div>
+  </div>
+
+  <!-- Page 4: About the Event (English) -->
+  <div class="page content-page">
+    <h2 class="page-title">About the Event</h2>
+
+    <div class="section">
+      <h3>Private Executive Roundtable</h3>
+      <p>As AI moves beyond experimentation, this closed-door executive session brings together senior leaders across retail and consumer industries to discuss the structural shift from pilots to production-grade AI systems.</p>
+      <p>The focus is not on tools, but on <strong>architecture, governance, and long-term operating models</strong>.</p>
+    </div>
+
+    <div class="info-box">
+      <p><strong>Theme:</strong> From Pilot to Infrastructure - Transforming AI into Enterprise-Ready Impact</p>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-number">12</div>
+        <div class="stat-label">Executive Seats</div>
       </div>
-      <div class="letter-signature">
-        <span class="name">Chunbo Huang</span> · <span class="title">Founder & CEO, Socialhub.AI</span>
+      <div class="stat-item">
+        <div class="stat-number">2.5</div>
+        <div class="stat-label">Hours of Discussion</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">2</div>
+        <div class="stat-label">Roundtable Sessions</div>
       </div>
     </div>
 
-    <div class="lang-section zh">
-      <div class="lang-label">繁體中文</div>
-      <div class="letter-content">
-        <p>尊敬的企業領袖：</p>
-        <p>誠摯邀請您參加 <span class="highlight">Socialhub.AI 全球巡迴</span>系列活動中的高管圓桌會議，將於<span class="highlight">2026年4月15日</span>在香港舉行。</p>
-        <p>隨著人工智能從實驗階段進入企業運營核心，一個根本問題浮現：<em>我們如何將孤立的試點項目轉化為生產級AI基礎設施？</em></p>
-        <p>這不是一場技術展示會，而是零售和消費行業高管之間的閉門對話，共同探討實現可持續AI價值所需的架構、治理和運營模式變革。</p>
-        <p>本次會議僅設<span class="highlight">12個席位</span>，旨在促進坦誠的同儕交流。每位參與者都將帶來獨特視角和超越實驗階段的共同承諾。</p>
-        <p>我相信您的經驗和見解將為這次對話增添重要價值。誠摯期待您的蒞臨。</p>
+    <div class="section">
+      <h3>Who Should Attend</h3>
+      <ul>
+        <li>C-level executives (CMO, COO, CIO, CDO, CTO)</li>
+        <li>Heads of Digital, Growth, CRM, Loyalty, Data, or AI</li>
+        <li>Enterprise architects and platform owners</li>
+        <li>Retail, consumer, and multi-brand operators preparing for AI transformation</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>Discussion Themes</h3>
+      <ul>
+        <li><strong>From Pilot to Production:</strong> Governance, data architecture, workflow integration, risk management, and measurable ROI</li>
+        <li><strong>AI-Native Loyalty Architecture:</strong> Behavior-based value, margin-aware personalization, omni-channel identity, and sustainable customer economics</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>What to Expect</h3>
+      <p>This is a practitioner-led dialogue, not a vendor presentation. You will engage directly with peers facing similar challenges, share hard-won lessons, and leave with actionable frameworks for your AI transformation journey.</p>
+    </div>
+  </div>
+
+  <!-- Page 5: About the Event (繁體中文) -->
+  <div class="page content-page">
+    <h2 class="page-title">活動簡介</h2>
+
+    <div class="section">
+      <h3>私密高管圓桌會議</h3>
+      <p>隨著AI超越實驗階段，本次閉門高管會議匯聚零售及消費行業的資深領袖，共同探討從試點到生產級AI系統的結構性轉變。</p>
+      <p>我們的重點不在工具，而在於<strong>架構、治理和長期運營模式</strong>。</p>
+    </div>
+
+    <div class="info-box">
+      <p><strong>主題：</strong>從試點到基礎設施 - 將AI轉化為企業級影響力</p>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-number">12</div>
+        <div class="stat-label">高管席位</div>
       </div>
-      <div class="letter-signature">
-        <span class="name">黃春波</span> · <span class="title">Socialhub.AI 創辦人兼首席執行官</span>
+      <div class="stat-item">
+        <div class="stat-number">2.5</div>
+        <div class="stat-label">小時討論</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">2</div>
+        <div class="stat-label">圓桌會議</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>適合參與者</h3>
+      <ul>
+        <li>C級高管（CMO、COO、CIO、CDO、CTO）</li>
+        <li>數碼化、增長、CRM、會員忠誠度、數據或AI負責人</li>
+        <li>企業架構師和平台負責人</li>
+        <li>正在籌備AI轉型的零售、消費及多品牌運營商</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>討論主題</h3>
+      <ul>
+        <li><strong>從試點到生產：</strong>治理、數據架構、工作流程整合、風險管理及可衡量的投資回報</li>
+        <li><strong>AI原生忠誠度架構：</strong>基於行為的價值、利潤感知的個性化、全渠道身份及可持續的客戶經濟學</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>您將獲得</h3>
+      <p>這是一場由實踐者主導的對話，而非供應商演示。您將直接與面臨類似挑戰的同儕交流，分享寶貴經驗，並帶走可付諸實踐的AI轉型框架。</p>
+    </div>
+  </div>
+
+  <!-- Page 6: Agenda (English) -->
+  <div class="page content-page">
+    <h2 class="page-title">Agenda</h2>
+    <p style="color:#666; font-size:11pt; margin-bottom:8mm;">Wednesday, April 15, 2026 | Hong Kong</p>
+
+    <div class="agenda-item">
+      <div class="agenda-time">13:30 - 14:00</div>
+      <div class="agenda-content">
+        <strong>Arrival & Executive Networking</strong>
+        <p>Welcome refreshments and informal introductions</p>
+      </div>
+    </div>
+
+    <div class="agenda-item">
+      <div class="agenda-time">14:00 - 14:10</div>
+      <div class="agenda-content">
+        <strong>Opening Perspectives</strong>
+        <p class="speaker">Mahesh Neelakantan, Industry Advisor, Retail & Consumer Goods</p>
+        <p class="speaker">Chunbo Huang, Founder & CEO, Socialhub.AI</p>
+        <p>Framing the discussion: moving AI from isolated use cases to enterprise infrastructure.</p>
+      </div>
+    </div>
+
+    <div class="agenda-item">
+      <div class="agenda-time">14:10 - 14:30</div>
+      <div class="agenda-content">
+        <strong>Executive Introductions</strong>
+        <p>A brief round of perspectives: where each organization stands in its AI journey, and the structural challenges ahead.</p>
+      </div>
+    </div>
+
+    <div class="agenda-item">
+      <div class="agenda-time">14:30 - 15:20</div>
+      <div class="agenda-content">
+        <strong>Roundtable Discussion I</strong>
+        <p>How to transition from pilot projects to production-ready AI systems</p>
+        <p class="themes">Key themes: governance, data architecture, workflow integration, risk management, and measurable ROI.</p>
+      </div>
+    </div>
+
+    <div class="agenda-item">
+      <div class="agenda-time">15:20 - 15:30</div>
+      <div class="agenda-content">
+        <strong>Coffee & Informal Exchange</strong>
+        <p>Refreshment break and continued networking</p>
+      </div>
+    </div>
+
+    <div class="agenda-item">
+      <div class="agenda-time">15:30 - 16:20</div>
+      <div class="agenda-content">
+        <strong>Roundtable Discussion II</strong>
+        <p>The evolution of loyalty architecture in an AI-native era</p>
+        <p class="themes">Key themes: behavior-based value, margin-aware personalization, omni-channel identity, and sustainable customer economics.</p>
+      </div>
+    </div>
+
+    <div class="agenda-item">
+      <div class="agenda-time">16:20 - 16:30</div>
+      <div class="agenda-content">
+        <strong>Closing Reflections</strong>
+        <p class="speaker">David Kwok, Head of AI & Digital Native Pursuit, Microsoft Asia</p>
+        <p>Synthesis of key insights and forward-looking considerations for enterprise AI transformation.</p>
       </div>
     </div>
   </div>
 
-  <!-- Page 3: About the Event (Bilingual) -->
-  <div class="page bilingual-page">
-    <h2 class="page-title">About the Event 活動簡介</h2>
+  <!-- Page 7: Agenda (繁體中文) -->
+  <div class="page content-page">
+    <h2 class="page-title">議程</h2>
+    <p style="color:#666; font-size:11pt; margin-bottom:8mm;">2026年4月15日（星期三）| 香港</p>
 
-    <div class="lang-section en">
-      <div class="lang-label">English</div>
-      <div class="section">
-        <h3>Private Executive Roundtable</h3>
-        <p>As AI moves beyond experimentation, this closed-door executive session brings together senior leaders across retail and consumer industries to discuss the structural shift from pilots to production-grade AI systems. The focus is not on tools, but on <strong>architecture, governance, and long-term operating models</strong>.</p>
-      </div>
-      <div class="info-box">
-        <p><strong>Theme:</strong> From Pilot to Infrastructure - Transforming AI into Enterprise-Ready Impact</p>
-      </div>
-      <div class="stats-row">
-        <div class="stat-item"><div class="stat-number">12</div><div class="stat-label">Executive Seats</div></div>
-        <div class="stat-item"><div class="stat-number">2.5</div><div class="stat-label">Hours</div></div>
-        <div class="stat-item"><div class="stat-number">2</div><div class="stat-label">Roundtables</div></div>
-      </div>
-      <div class="section">
-        <h3>Who Should Attend</h3>
-        <ul>
-          <li>C-level executives (CMO, COO, CIO, CDO, CTO)</li>
-          <li>Heads of Digital, Growth, CRM, Loyalty, Data, or AI</li>
-          <li>Enterprise architects and platform owners</li>
-        </ul>
-      </div>
-      <div class="section">
-        <h3>Discussion Themes</h3>
-        <ul>
-          <li><strong>From Pilot to Production:</strong> Governance, data architecture, workflow integration, risk management</li>
-          <li><strong>AI-Native Loyalty:</strong> Behavior-based value, margin-aware personalization, omni-channel identity</li>
-        </ul>
+    <div class="agenda-item">
+      <div class="agenda-time">13:30 - 14:00</div>
+      <div class="agenda-content">
+        <strong>簽到與高管交流</strong>
+        <p>歡迎茶點及非正式交流</p>
       </div>
     </div>
 
-    <div class="lang-section zh">
-      <div class="lang-label">繁體中文</div>
-      <div class="section">
-        <h3>私密高管圓桌會議</h3>
-        <p>隨著AI超越實驗階段，本次閉門高管會議匯聚零售及消費行業的資深領袖，探討從試點到生產級AI系統的結構性轉變。重點不在工具，而在於<strong>架構、治理和長期運營模式</strong>。</p>
-      </div>
-      <div class="info-box">
-        <p><strong>主題：</strong>從試點到基礎設施 - 將AI轉化為企業級影響力</p>
-      </div>
-      <div class="stats-row">
-        <div class="stat-item"><div class="stat-number">12</div><div class="stat-label">高管席位</div></div>
-        <div class="stat-item"><div class="stat-number">2.5</div><div class="stat-label">小時</div></div>
-        <div class="stat-item"><div class="stat-number">2</div><div class="stat-label">圓桌討論</div></div>
-      </div>
-      <div class="section">
-        <h3>適合參與者</h3>
-        <ul>
-          <li>C級高管（CMO、COO、CIO、CDO、CTO）</li>
-          <li>數碼化、增長、CRM、會員、數據或AI負責人</li>
-          <li>企業架構師和平台負責人</li>
-        </ul>
-      </div>
-      <div class="section">
-        <h3>討論主題</h3>
-        <ul>
-          <li><strong>從試點到生產：</strong>治理、數據架構、工作流程整合、風險管理</li>
-          <li><strong>AI原生忠誠度：</strong>基於行為的價值、利潤感知的個性化、全渠道身份</li>
-        </ul>
+    <div class="agenda-item">
+      <div class="agenda-time">14:00 - 14:10</div>
+      <div class="agenda-content">
+        <strong>開場致辭</strong>
+        <p class="speaker">Mahesh Neelakantan，零售及消費品行業顧問</p>
+        <p class="speaker">黃春波，Socialhub.AI 創辦人兼首席執行官</p>
+        <p>議題框架：將AI從孤立用例推進至企業基礎設施。</p>
       </div>
     </div>
-  </div>
 
-  <!-- Page 4: Agenda (Bilingual) -->
-  <div class="page bilingual-page">
-    <h2 class="page-title">Agenda 議程</h2>
-    <p style="color:#666; font-size:9pt; margin-bottom:3mm;">Wednesday, April 15, 2026 | 2026年4月15日（星期三）| Hong Kong 香港</p>
-
-    <div class="lang-section en">
-      <div class="lang-label">English</div>
-      <div class="agenda-item"><div class="agenda-time">13:30-14:00</div><div class="agenda-content"><strong>Arrival & Executive Networking</strong><p>Welcome refreshments and informal introductions</p></div></div>
-      <div class="agenda-item"><div class="agenda-time">14:00-14:10</div><div class="agenda-content"><strong>Opening Perspectives</strong><p>Mahesh Neelakantan & Chunbo Huang - Framing the discussion</p></div></div>
-      <div class="agenda-item"><div class="agenda-time">14:10-14:30</div><div class="agenda-content"><strong>Executive Introductions</strong><p>Brief round of perspectives on AI journey and challenges</p></div></div>
-      <div class="agenda-item"><div class="agenda-time">14:30-15:20</div><div class="agenda-content"><strong>Roundtable I: From Pilot to Production</strong><p>Governance, data architecture, workflow integration, risk management, ROI</p></div></div>
-      <div class="agenda-item"><div class="agenda-time">15:20-15:30</div><div class="agenda-content"><strong>Coffee & Informal Exchange</strong></div></div>
-      <div class="agenda-item"><div class="agenda-time">15:30-16:20</div><div class="agenda-content"><strong>Roundtable II: AI-Native Loyalty Architecture</strong><p>Behavior-based value, personalization, omni-channel identity</p></div></div>
-      <div class="agenda-item"><div class="agenda-time">16:20-16:30</div><div class="agenda-content"><strong>Closing Reflections</strong><p>David Kwok, Microsoft Asia - Synthesis of key insights</p></div></div>
+    <div class="agenda-item">
+      <div class="agenda-time">14:10 - 14:30</div>
+      <div class="agenda-content">
+        <strong>高管自我介紹</strong>
+        <p>簡要分享各組織的AI旅程現狀及面臨的結構性挑戰。</p>
+      </div>
     </div>
 
-    <div class="lang-section zh">
-      <div class="lang-label">繁體中文</div>
-      <div class="agenda-item"><div class="agenda-time">13:30-14:00</div><div class="agenda-content"><strong>簽到與高管交流</strong><p>歡迎茶點及非正式介紹</p></div></div>
-      <div class="agenda-item"><div class="agenda-time">14:00-14:10</div><div class="agenda-content"><strong>開場致辭</strong><p>Mahesh Neelakantan 與黃春波 - 議題框架</p></div></div>
-      <div class="agenda-item"><div class="agenda-time">14:10-14:30</div><div class="agenda-content"><strong>高管自我介紹</strong><p>分享各組織AI旅程和面臨的挑戰</p></div></div>
-      <div class="agenda-item"><div class="agenda-time">14:30-15:20</div><div class="agenda-content"><strong>圓桌討論一：從試點到生產</strong><p>治理、數據架構、工作流程整合、風險管理、投資回報</p></div></div>
-      <div class="agenda-item"><div class="agenda-time">15:20-15:30</div><div class="agenda-content"><strong>茶歇與自由交流</strong></div></div>
-      <div class="agenda-item"><div class="agenda-time">15:30-16:20</div><div class="agenda-content"><strong>圓桌討論二：AI原生忠誠度架構</strong><p>基於行為的價值、個性化、全渠道身份</p></div></div>
-      <div class="agenda-item"><div class="agenda-time">16:20-16:30</div><div class="agenda-content"><strong>閉幕總結</strong><p>David Kwok，微軟亞洲 - 核心洞察總結</p></div></div>
+    <div class="agenda-item">
+      <div class="agenda-time">14:30 - 15:20</div>
+      <div class="agenda-content">
+        <strong>圓桌討論一</strong>
+        <p>如何將試點項目轉化為生產就緒的AI系統</p>
+        <p class="themes">核心主題：治理、數據架構、工作流程整合、風險管理及可衡量的投資回報。</p>
+      </div>
+    </div>
+
+    <div class="agenda-item">
+      <div class="agenda-time">15:20 - 15:30</div>
+      <div class="agenda-content">
+        <strong>茶歇與自由交流</strong>
+        <p>休息及持續交流</p>
+      </div>
+    </div>
+
+    <div class="agenda-item">
+      <div class="agenda-time">15:30 - 16:20</div>
+      <div class="agenda-content">
+        <strong>圓桌討論二</strong>
+        <p>AI原生時代的忠誠度架構演進</p>
+        <p class="themes">核心主題：基於行為的價值、利潤感知的個性化、全渠道身份及可持續的客戶經濟學。</p>
+      </div>
+    </div>
+
+    <div class="agenda-item">
+      <div class="agenda-time">16:20 - 16:30</div>
+      <div class="agenda-content">
+        <strong>閉幕總結</strong>
+        <p class="speaker">David Kwok，微軟亞洲AI及數碼原生業務拓展主管</p>
+        <p>核心洞察總結及企業AI轉型前瞻思考。</p>
+      </div>
     </div>
   </div>
 
-  <!-- Page 5: Venue & Contact (Bilingual) -->
-  <div class="page bilingual-page">
-    <h2 class="page-title">Venue & Contact 場地與聯繫</h2>
+  <!-- Page 8: Venue & Contact (English) -->
+  <div class="page content-page">
+    <h2 class="page-title">Venue & Contact</h2>
 
-    <div class="lang-section en">
-      <div class="lang-label">English</div>
-      <div class="venue-card">
-        <h3>Microsoft Hong Kong</h3>
-        <p><strong>Address:</strong> 15th Floor, Cyberport 2, 100 Cyberport Road, Hong Kong</p>
-        <p><strong>Date:</strong> Wednesday, April 15, 2026</p>
-        <p><strong>Time:</strong> Check-in at 1:30 PM, Session starts at 2:00 PM (HKT)</p>
+    <div class="venue-card">
+      <h3>Microsoft Hong Kong</h3>
+      <p><strong>Address:</strong> 15th Floor, Cyberport 2, 100 Cyberport Road, Hong Kong</p>
+      <p><strong>Date:</strong> Wednesday, April 15, 2026</p>
+      <p><strong>Time:</strong> Check-in at 1:30 PM, Session starts at 2:00 PM (HKT)</p>
+    </div>
+
+    <div class="map-image-container" style="margin: 3mm 0;">
+      <img src="assets/hongkong-map.png" alt="Microsoft Hong Kong Location Map" style="width: 100%; max-height: 45mm; object-fit: cover; border-radius: 2mm; border: 1px solid #c0d4ff;" />
+    </div>
+
+    <div class="section">
+      <h3>Getting There</h3>
+      <ul>
+        <li><strong>By Bus:</strong> Routes 30X, 73, 973 to Cyberport</li>
+        <li><strong>By Taxi:</strong> Drop off at Cyberport 2, 100 Cyberport Road</li>
+        <li><strong>Parking:</strong> Available at Cyberport car park</li>
+      </ul>
+    </div>
+
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="label">Email</div>
+        <div class="value">business@socialhub.ai</div>
       </div>
-      <div class="section">
-        <h3>Getting There</h3>
-        <ul>
-          <li><strong>By Bus:</strong> Routes 30X, 73, 973 to Cyberport</li>
-          <li><strong>By Taxi:</strong> Drop off at Cyberport 2, 100 Cyberport Road</li>
-          <li><strong>Parking:</strong> Available at Cyberport car park</li>
-        </ul>
-      </div>
-      <div class="section">
-        <h3>Important Notes</h3>
-        <ul>
-          <li>Please bring a valid photo ID for building security</li>
-          <li>Business attire recommended</li>
-          <li>Session conducted in English</li>
-        </ul>
-      </div>
-      <div class="info-box">
-        <p><strong>RSVP:</strong> Please confirm by April 7, 2026. Contact: business@socialhub.ai</p>
+      <div class="contact-item">
+        <div class="label">Website</div>
+        <div class="value">www.socialhub.ai</div>
       </div>
     </div>
 
-    <div class="lang-section zh">
-      <div class="lang-label">繁體中文</div>
-      <div class="venue-card">
-        <h3>微軟香港</h3>
-        <p><strong>地址：</strong>香港數碼港道100號數碼港二座15樓</p>
-        <p><strong>日期：</strong>2026年4月15日（星期三）</p>
-        <p><strong>時間：</strong>下午1:30簽到，下午2:00正式開始（香港時間）</p>
-      </div>
-      <div class="section">
-        <h3>交通指南</h3>
-        <ul>
-          <li><strong>巴士：</strong>30X、73、973路至數碼港</li>
-          <li><strong>的士：</strong>前往數碼港道100號數碼港二座</li>
-          <li><strong>停車：</strong>數碼港停車場</li>
-        </ul>
-      </div>
-      <div class="section">
-        <h3>注意事項</h3>
-        <ul>
-          <li>請攜帶有效身份證件以便大樓安檢</li>
-          <li>建議穿著商務正裝</li>
-          <li>會議以英語進行</li>
-        </ul>
-      </div>
-      <div class="info-box">
-        <p><strong>回覆：</strong>請於2026年4月7日前確認出席。聯繫：business@socialhub.ai</p>
-      </div>
+    <div class="section" style="margin-top: 6mm;">
+      <h3>Important Notes</h3>
+      <ul>
+        <li>Please bring a valid photo ID for building security</li>
+        <li>Business attire recommended</li>
+        <li>Session conducted in English</li>
+        <li>Invite-only event with limited seating</li>
+      </ul>
     </div>
 
-    <div style="margin-top: 3mm;">
-      <img src="assets/hongkong-map.png" alt="Microsoft Hong Kong Location Map" style="width: 100%; max-height: 38mm; object-fit: cover; border-radius: 2mm; border: 1px solid #c0d4ff;" />
+    <div class="info-box" style="margin-top: 5mm;">
+      <p><strong>RSVP:</strong> Please confirm by April 7, 2026. Contact: business@socialhub.ai</p>
     </div>
   </div>
 
-  <!-- Page 6: Back Cover -->
+  <!-- Page 9: Venue & Contact (繁體中文) -->
+  <div class="page content-page">
+    <h2 class="page-title">場地與聯繫</h2>
+
+    <div class="venue-card">
+      <h3>微軟香港</h3>
+      <p><strong>地址：</strong>香港數碼港道100號數碼港二座15樓</p>
+      <p><strong>日期：</strong>2026年4月15日（星期三）</p>
+      <p><strong>時間：</strong>下午1:30簽到，下午2:00正式開始（香港時間）</p>
+    </div>
+
+    <div class="map-image-container" style="margin: 3mm 0;">
+      <img src="assets/hongkong-map.png" alt="微軟香港位置地圖" style="width: 100%; max-height: 45mm; object-fit: cover; border-radius: 2mm; border: 1px solid #c0d4ff;" />
+    </div>
+
+    <div class="section">
+      <h3>交通指南</h3>
+      <ul>
+        <li><strong>巴士：</strong>30X、73、973路至數碼港</li>
+        <li><strong>的士：</strong>前往數碼港道100號數碼港二座</li>
+        <li><strong>停車：</strong>數碼港停車場</li>
+      </ul>
+    </div>
+
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="label">電郵</div>
+        <div class="value">business@socialhub.ai</div>
+      </div>
+      <div class="contact-item">
+        <div class="label">網站</div>
+        <div class="value">www.socialhub.ai</div>
+      </div>
+    </div>
+
+    <div class="section" style="margin-top: 6mm;">
+      <h3>注意事項</h3>
+      <ul>
+        <li>請攜帶有效身份證件以便大樓安檢</li>
+        <li>建議穿著商務正裝</li>
+        <li>會議以英語進行</li>
+        <li>僅限受邀者參加，席位有限</li>
+      </ul>
+    </div>
+
+    <div class="info-box" style="margin-top: 5mm;">
+      <p><strong>回覆確認：</strong>請於2026年4月7日前確認出席。聯繫方式：business@socialhub.ai</p>
+    </div>
+  </div>
+
+  <!-- Page 10: Back Cover -->
   <div class="page back-cover">
     <div class="logo-text">Socialhub<span>.AI</span></div>
     <div class="tagline">Customer Intelligence Platform</div>
+
     <div class="divider"></div>
+
     <div class="tour-info">Global Tour 2026</div>
     <div class="tour-theme">From Pilot to Infrastructure</div>
+
     <div class="divider"></div>
+
     <p style="font-size: 12pt; color: #b8d4ff; max-width: 120mm; line-height: 1.8;">
       Transforming AI into Enterprise-Ready Impact.<br/>
       Join us in Hong Kong, April 15, 2026.
     </p>
+
     <div class="website">www.socialhub.ai</div>
+
     <div class="copyright">&copy; 2026 Socialhub.AI. All rights reserved.</div>
   </div>
 
