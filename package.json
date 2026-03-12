@@ -1,0 +1,29 @@
+{
+  "name": "event",
+  "version": "1.0.0",
+  "description": "Standalone event website for Socialhub.AI x Microsoft executive series.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huangchunbo2025/event.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/huangchunbo2025/event/issues"
+  },
+  "homepage": "https://github.com/huangchunbo2025/event#readme",
+  "dependencies": {
+    "express": "^5.2.1",
+    "pdf-parse": "^2.4.5",
+    "pdf2json": "^4.0.2",
+    "pptxgenjs": "^4.0.1",
+    "sql.js": "^1.14.1"
+  }
+}

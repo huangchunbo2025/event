@@ -476,6 +476,78 @@
       opacity: .9;
     }
 
+    .banner-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
+      min-width: min(420px, 100%);
+    }
+
+    .register-panel {
+      width: min(420px, 100%);
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 18px;
+      padding: 18px;
+      backdrop-filter: blur(10px);
+    }
+
+    .register-panel[hidden] {
+      display: none;
+    }
+
+    .register-form {
+      display: grid;
+      gap: 12px;
+    }
+
+    .register-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .field-group {
+      display: grid;
+      gap: 6px;
+    }
+
+    .field-group label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #eef5ff;
+    }
+
+    .field-group input {
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 12px;
+      padding: 12px 14px;
+      background: rgba(255, 255, 255, 0.96);
+      color: var(--ink);
+      font: inherit;
+    }
+
+    .field-group input:focus {
+      outline: 2px solid rgba(255, 255, 255, 0.4);
+      outline-offset: 1px;
+    }
+
+    .register-feedback {
+      min-height: 20px;
+      font-size: 13px;
+      color: #eef5ff;
+    }
+
+    .register-feedback.error {
+      color: #ffd7d7;
+    }
+
+    .register-feedback.success {
+      color: #d8ffe6;
+    }
+
     .media-grid {
       display: grid;
       gap: 14px;
@@ -592,6 +664,15 @@
       .banner {
         flex-direction: column;
         align-items: flex-start;
+      }
+      .banner-actions,
+      .register-panel {
+        width: 100%;
+        min-width: 0;
+        align-items: stretch;
+      }
+      .register-grid {
+        grid-template-columns: 1fr;
       }
       .media-grid {
         grid-template-columns: 1fr;
@@ -1022,7 +1103,34 @@
               <h2 style="margin:0; color:#fff;">Register for Singapore</h2>
               <p>Approximately 12 seats only. If you are interested, request an invitation and we will confirm availability.</p>
             </div>
-            <a class="btn btn-primary" href="#" onclick="alert('Registration link coming soon'); return false;">Request Invitation</a>
+            <div class="banner-actions">
+              <button id="singaporeRegisterToggle" class="btn btn-primary" type="button">我要注册</button>
+              <div id="singaporeRegisterPanel" class="register-panel" hidden>
+                <form id="singaporeRegisterForm" class="register-form">
+                  <input type="hidden" name="city" value="Singapore" />
+                  <div class="register-grid">
+                    <div class="field-group">
+                      <label for="firstName">First Name</label>
+                      <input id="firstName" name="firstName" type="text" required />
+                    </div>
+                    <div class="field-group">
+                      <label for="lastName">Last Name</label>
+                      <input id="lastName" name="lastName" type="text" required />
+                    </div>
+                  </div>
+                  <div class="field-group">
+                    <label for="company">Company</label>
+                    <input id="company" name="company" type="text" required />
+                  </div>
+                  <div class="field-group">
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" required />
+                  </div>
+                  <button id="singaporeRegisterSubmit" class="btn btn-primary" type="submit">Submit Registration</button>
+                  <div id="singaporeRegisterFeedback" class="register-feedback" aria-live="polite"></div>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -1436,6 +1544,59 @@
           }
         });
       });
+
+      const registerToggle = document.getElementById('singaporeRegisterToggle');
+      const registerPanel = document.getElementById('singaporeRegisterPanel');
+      const registerForm = document.getElementById('singaporeRegisterForm');
+      const registerFeedback = document.getElementById('singaporeRegisterFeedback');
+      const registerSubmit = document.getElementById('singaporeRegisterSubmit');
+
+      if (registerToggle && registerPanel && registerForm && registerFeedback && registerSubmit) {
+        registerToggle.addEventListener('click', function () {
+          const isHidden = registerPanel.hasAttribute('hidden');
+          if (isHidden) {
+            registerPanel.removeAttribute('hidden');
+            registerToggle.textContent = '收起表格';
+          } else {
+            registerPanel.setAttribute('hidden', '');
+            registerToggle.textContent = '我要注册';
+          }
+        });
+
+        registerForm.addEventListener('submit', async function (event) {
+          event.preventDefault();
+          registerFeedback.className = 'register-feedback';
+          registerFeedback.textContent = 'Submitting...';
+          registerSubmit.disabled = true;
+
+          const formData = new FormData(registerForm);
+          const payload = Object.fromEntries(formData.entries());
+
+          try {
+            const response = await fetch('/api/registrations', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(payload)
+            });
+
+            const result = await response.json();
+            if (!response.ok || !result.ok) {
+              throw new Error(result.error || 'Submission failed.');
+            }
+
+            registerForm.reset();
+            registerFeedback.className = 'register-feedback success';
+            registerFeedback.textContent = 'Registration submitted successfully.';
+          } catch (error) {
+            registerFeedback.className = 'register-feedback error';
+            registerFeedback.textContent = error.message || 'Submission failed.';
+          } finally {
+            registerSubmit.disabled = false;
+          }
+        });
+      }
     })();
   </script>
 </body>
