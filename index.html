@@ -218,31 +218,49 @@
       font-size: 15px;
     }
 
-    .leader-card {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+    .leader-wall {
+      display: grid;
+      gap: 18px;
+    }
+
+    .leader-group {
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: var(--shadow);
     }
 
     .leader-sector {
-      display: inline-block;
-      align-self: flex-start;
-      padding: 5px 10px;
-      border-radius: 999px;
-      background: #eef4fb;
-      color: #6b7b93;
+      margin: 0 0 14px;
+      color: #73839a;
       font-size: 12px;
-      font-weight: 600;
-      letter-spacing: .05em;
+      font-weight: 700;
+      letter-spacing: .08em;
       text-transform: uppercase;
     }
 
-    .leader-brands {
-      margin: 0;
+    .leader-logos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .leader-logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 62px;
+      padding: 14px 18px;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px solid #dce5f0;
       color: var(--ink);
-      font-size: 24px;
-      line-height: 1.35;
+      font-size: 20px;
+      line-height: 1.1;
       font-weight: 800;
+      letter-spacing: .01em;
+      box-shadow: 0 10px 22px rgba(10, 31, 68, 0.07);
     }
 
     .agenda-list {
@@ -906,38 +924,67 @@
         <div class="container">
           <h2>Thanks to Industry Leaders</h2>
           <p class="sub">We appreciate the participation and perspective of leaders across Singapore's retail, hospitality, consumer, leisure, membership, travel, and asset sectors.</p>
-          <div class="grid grid-3">
-            <article class="card leader-card">
-              <div class="leader-sector">Hospitality &amp; Travel</div>
-              <p class="leader-brands">Marriott, Hilton, Four Seasons, Millennium, AirAsia</p>
+          <div class="leader-wall">
+            <article class="leader-group">
+              <p class="leader-sector">Hospitality &amp; Travel</p>
+              <div class="leader-logos">
+                <span class="leader-logo">Marriott</span>
+                <span class="leader-logo">Hilton</span>
+                <span class="leader-logo">Four Seasons</span>
+                <span class="leader-logo">Millennium</span>
+                <span class="leader-logo">AirAsia</span>
+              </div>
             </article>
-            <article class="card leader-card">
-              <div class="leader-sector">Retail / Luxury</div>
-              <p class="leader-brands">LVMH, VF Corp, DFS, Avolta, JML</p>
+            <article class="leader-group">
+              <p class="leader-sector">Retail / Luxury</p>
+              <div class="leader-logos">
+                <span class="leader-logo">LVMH</span>
+                <span class="leader-logo">VF Corp</span>
+                <span class="leader-logo">DFS</span>
+                <span class="leader-logo">Avolta</span>
+                <span class="leader-logo">JML</span>
+              </div>
             </article>
-            <article class="card leader-card">
-              <div class="leader-sector">Consumer Goods</div>
-              <p class="leader-brands">Heineken, Coca-Cola</p>
+            <article class="leader-group">
+              <p class="leader-sector">Consumer Goods</p>
+              <div class="leader-logos">
+                <span class="leader-logo">Heineken</span>
+                <span class="leader-logo">Coca-Cola</span>
+              </div>
             </article>
-            <article class="card leader-card">
-              <div class="leader-sector">Leisure &amp; Attractions</div>
-              <p class="leader-brands">Sentosa Dev Corp, Mount Faber, Rainforest</p>
+            <article class="leader-group">
+              <p class="leader-sector">Leisure &amp; Attractions</p>
+              <div class="leader-logos">
+                <span class="leader-logo">Sentosa Dev Corp</span>
+                <span class="leader-logo">Mount Faber</span>
+                <span class="leader-logo">Rainforest</span>
+              </div>
             </article>
-            <article class="card leader-card">
-              <div class="leader-sector">Food &amp; Beverage</div>
-              <p class="leader-brands">Guzman y Gomez, CHAGEE</p>
+            <article class="leader-group">
+              <p class="leader-sector">Food &amp; Beverage</p>
+              <div class="leader-logos">
+                <span class="leader-logo">Guzman y Gomez</span>
+                <span class="leader-logo">CHAGEE</span>
+              </div>
             </article>
-            <article class="card leader-card">
-              <div class="leader-sector">Membership Clubs</div>
-              <p class="leader-brands">NTUC Club, Singapore Swimming Club</p>
+            <article class="leader-group">
+              <p class="leader-sector">Membership Clubs</p>
+              <div class="leader-logos">
+                <span class="leader-logo">NTUC Club</span>
+                <span class="leader-logo">Singapore Swimming Club</span>
+              </div>
             </article>
-            <article class="card leader-card">
-              <div class="leader-sector">Travel Services</div>
-              <p class="leader-brands">EU Holidays</p>
+            <article class="leader-group">
+              <p class="leader-sector">Travel Services</p>
+              <div class="leader-logos">
+                <span class="leader-logo">EU Holidays</span>
+              </div>
             </article>
-            <article class="card leader-card">
-              <div class="leader-sector">Asset / Real Estate</div>
-              <p class="leader-brands">Monopole</p>
+            <article class="leader-group">
+              <p class="leader-sector">Asset / Real Estate</p>
+              <div class="leader-logos">
+                <span class="leader-logo">Monopole</span>
+              </div>
             </article>
           </div>
         </div>
