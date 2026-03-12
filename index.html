@@ -569,6 +569,39 @@
       color: #d8ffe6;
     }
 
+    .confirm-modal[hidden] {
+      display: none;
+    }
+
+    .confirm-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      background: rgba(8, 18, 38, 0.58);
+    }
+
+    .confirm-card {
+      width: min(420px, 92vw);
+      background: #fff;
+      color: var(--ink);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 24px 50px rgba(10, 31, 68, 0.22);
+    }
+
+    .confirm-card h3 {
+      margin: 0 0 8px;
+      font-size: 24px;
+    }
+
+    .confirm-card p {
+      margin: 0 0 18px;
+      color: var(--muted);
+    }
+
     .media-grid {
       display: grid;
       gap: 14px;
@@ -1572,6 +1605,13 @@
   <footer>
     © 2026 Socialhub.AI Executive Series
   </footer>
+  <div id="registrationConfirmModal" class="confirm-modal" hidden>
+    <div class="confirm-card">
+      <h3>Registration Submitted</h3>
+      <p id="registrationConfirmMessage">Your registration has been submitted successfully.</p>
+      <button id="registrationConfirmButton" class="btn btn-primary" type="button">OK</button>
+    </div>
+  </div>
   <script>
     (function () {
       const inviteeLogos = document.querySelectorAll('.invitee-logo');
@@ -1597,6 +1637,23 @@
         singapore: document.getElementById('city-singapore'),
         hongkong: document.getElementById('city-hongkong')
       };
+      const registrationConfirmModal = document.getElementById('registrationConfirmModal');
+      const registrationConfirmMessage = document.getElementById('registrationConfirmMessage');
+      const registrationConfirmButton = document.getElementById('registrationConfirmButton');
+
+      function showRegistrationConfirm(message) {
+        if (!registrationConfirmModal || !registrationConfirmMessage) {
+          return;
+        }
+        registrationConfirmMessage.textContent = message;
+        registrationConfirmModal.removeAttribute('hidden');
+      }
+
+      if (registrationConfirmButton && registrationConfirmModal) {
+        registrationConfirmButton.addEventListener('click', function () {
+          registrationConfirmModal.setAttribute('hidden', '');
+        });
+      }
 
       function showCity(city) {
         cityButtons.forEach((btn) => {
@@ -1653,11 +1710,11 @@
             registerForm.reset();
             registerFeedback.className = 'register-feedback success';
             registerFeedback.textContent = 'Registration submitted successfully.';
-            window.alert('Registration submitted successfully.');
+            showRegistrationConfirm('Registration submitted successfully.');
           } catch (error) {
             registerFeedback.className = 'register-feedback error';
             registerFeedback.textContent = error.message || 'Submission failed.';
-            window.alert(registerFeedback.textContent);
+            showRegistrationConfirm(registerFeedback.textContent);
           } finally {
             registerSubmit.disabled = false;
           }
