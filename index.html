@@ -569,6 +569,10 @@
       color: #d8ffe6;
     }
 
+    .register-submit {
+      cursor: pointer;
+    }
+
     .confirm-modal[hidden] {
       display: none;
     }
@@ -969,7 +973,7 @@
               <details class="register-details">
                 <summary class="btn btn-primary">Register Now</summary>
                 <div class="register-panel">
-                  <form class="register-form singapore-register-form" method="post" action="/api/registrations" onsubmit="if (window.handleSingaporeRegistration) { window.handleSingaporeRegistration(event, this); } return false;">
+                  <form class="register-form singapore-register-form" method="post" action="/api/registrations" onsubmit="return false;">
                     <input type="hidden" name="city" value="Singapore" />
                     <div class="register-grid">
                       <div class="field-group">
@@ -993,7 +997,7 @@
                         <input name="email" type="email" required />
                       </label>
                     </div>
-                    <button class="btn btn-primary register-submit" type="submit">Submit Registration</button>
+                    <button class="btn btn-primary register-submit" type="button">Submit Registration</button>
                     <div class="register-feedback" aria-live="polite"></div>
                   </form>
                 </div>
@@ -1207,7 +1211,7 @@
               <details class="register-details">
                 <summary class="btn btn-primary">Register Now</summary>
                 <div class="register-panel">
-                  <form class="register-form singapore-register-form" method="post" action="/api/registrations" onsubmit="if (window.handleSingaporeRegistration) { window.handleSingaporeRegistration(event, this); } return false;">
+                  <form class="register-form singapore-register-form" method="post" action="/api/registrations" onsubmit="return false;">
                     <input type="hidden" name="city" value="Singapore" />
                     <div class="register-grid">
                       <div class="field-group">
@@ -1231,7 +1235,7 @@
                         <input name="email" type="email" required />
                       </label>
                     </div>
-                    <button class="btn btn-primary register-submit" type="submit">Submit Registration</button>
+                    <button class="btn btn-primary register-submit" type="button">Submit Registration</button>
                     <div class="register-feedback" aria-live="polite"></div>
                   </form>
                 </div>
@@ -1686,6 +1690,10 @@
           return false;
         }
 
+        if (typeof registerForm.reportValidity === 'function' && !registerForm.reportValidity()) {
+          return false;
+        }
+
         registerFeedback.className = 'register-feedback';
         registerFeedback.textContent = 'Submitting...';
         registerSubmit.disabled = true;
@@ -1721,6 +1729,17 @@
 
         return false;
       };
+
+      const registerForms = document.querySelectorAll('.singapore-register-form');
+      registerForms.forEach((registerForm) => {
+        const registerSubmit = registerForm.querySelector('.register-submit');
+        if (!registerSubmit) {
+          return;
+        }
+        registerSubmit.addEventListener('click', function (event) {
+          window.handleSingaporeRegistration(event, registerForm);
+        });
+      });
     })();
   </script>
 </body>
