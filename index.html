@@ -969,7 +969,7 @@
               <details class="register-details">
                 <summary class="btn btn-primary">Register Now</summary>
                 <div class="register-panel">
-                  <form class="register-form singapore-register-form" method="post" action="/api/registrations" onsubmit="return window.handleSingaporeRegistration ? window.handleSingaporeRegistration(event, this) : false;">
+                  <form class="register-form singapore-register-form" method="post" action="/api/registrations" onsubmit="if (window.handleSingaporeRegistration) { window.handleSingaporeRegistration(event, this); } return false;">
                     <input type="hidden" name="city" value="Singapore" />
                     <div class="register-grid">
                       <div class="field-group">
@@ -1207,7 +1207,7 @@
               <details class="register-details">
                 <summary class="btn btn-primary">Register Now</summary>
                 <div class="register-panel">
-                  <form class="register-form singapore-register-form" method="post" action="/api/registrations" onsubmit="return window.handleSingaporeRegistration ? window.handleSingaporeRegistration(event, this) : false;">
+                  <form class="register-form singapore-register-form" method="post" action="/api/registrations" onsubmit="if (window.handleSingaporeRegistration) { window.handleSingaporeRegistration(event, this); } return false;">
                     <input type="hidden" name="city" value="Singapore" />
                     <div class="register-grid">
                       <div class="field-group">
