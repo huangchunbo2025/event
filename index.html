@@ -484,6 +484,18 @@
       min-width: min(420px, 100%);
     }
 
+    .register-details {
+      width: min(420px, 100%);
+    }
+
+    .register-details summary {
+      list-style: none;
+    }
+
+    .register-details summary::-webkit-details-marker {
+      display: none;
+    }
+
     .register-panel {
       width: min(420px, 100%);
       background: rgba(255, 255, 255, 0.14);
@@ -666,6 +678,7 @@
         align-items: flex-start;
       }
       .banner-actions,
+      .register-details,
       .register-panel {
         width: 100%;
         min-width: 0;
@@ -1104,32 +1117,34 @@
               <p>Approximately 12 seats only. If you are interested, request an invitation and we will confirm availability.</p>
             </div>
             <div class="banner-actions">
-              <button id="singaporeRegisterToggle" class="btn btn-primary" type="button">我要注册</button>
-              <div id="singaporeRegisterPanel" class="register-panel" hidden>
-                <form id="singaporeRegisterForm" class="register-form">
-                  <input type="hidden" name="city" value="Singapore" />
-                  <div class="register-grid">
-                    <div class="field-group">
-                      <label for="firstName">First Name</label>
-                      <input id="firstName" name="firstName" type="text" required />
+              <details id="singaporeRegisterDetails" class="register-details">
+                <summary class="btn btn-primary">我要注册</summary>
+                <div id="singaporeRegisterPanel" class="register-panel">
+                  <form id="singaporeRegisterForm" class="register-form">
+                    <input type="hidden" name="city" value="Singapore" />
+                    <div class="register-grid">
+                      <div class="field-group">
+                        <label for="firstName">First Name</label>
+                        <input id="firstName" name="firstName" type="text" required />
+                      </div>
+                      <div class="field-group">
+                        <label for="lastName">Last Name</label>
+                        <input id="lastName" name="lastName" type="text" required />
+                      </div>
                     </div>
                     <div class="field-group">
-                      <label for="lastName">Last Name</label>
-                      <input id="lastName" name="lastName" type="text" required />
+                      <label for="company">Company</label>
+                      <input id="company" name="company" type="text" required />
                     </div>
-                  </div>
-                  <div class="field-group">
-                    <label for="company">Company</label>
-                    <input id="company" name="company" type="text" required />
-                  </div>
-                  <div class="field-group">
-                    <label for="email">Email</label>
-                    <input id="email" name="email" type="email" required />
-                  </div>
-                  <button id="singaporeRegisterSubmit" class="btn btn-primary" type="submit">Submit Registration</button>
-                  <div id="singaporeRegisterFeedback" class="register-feedback" aria-live="polite"></div>
-                </form>
-              </div>
+                    <div class="field-group">
+                      <label for="email">Email</label>
+                      <input id="email" name="email" type="email" required />
+                    </div>
+                    <button id="singaporeRegisterSubmit" class="btn btn-primary" type="submit">Submit Registration</button>
+                    <div id="singaporeRegisterFeedback" class="register-feedback" aria-live="polite"></div>
+                  </form>
+                </div>
+              </details>
             </div>
           </div>
         </div>
@@ -1545,24 +1560,12 @@
         });
       });
 
-      const registerToggle = document.getElementById('singaporeRegisterToggle');
-      const registerPanel = document.getElementById('singaporeRegisterPanel');
+      const registerDetails = document.getElementById('singaporeRegisterDetails');
       const registerForm = document.getElementById('singaporeRegisterForm');
       const registerFeedback = document.getElementById('singaporeRegisterFeedback');
       const registerSubmit = document.getElementById('singaporeRegisterSubmit');
 
-      if (registerToggle && registerPanel && registerForm && registerFeedback && registerSubmit) {
-        registerToggle.addEventListener('click', function () {
-          const isHidden = registerPanel.hasAttribute('hidden');
-          if (isHidden) {
-            registerPanel.removeAttribute('hidden');
-            registerToggle.textContent = '收起表格';
-          } else {
-            registerPanel.setAttribute('hidden', '');
-            registerToggle.textContent = '我要注册';
-          }
-        });
-
+      if (registerDetails && registerForm && registerFeedback && registerSubmit) {
         registerForm.addEventListener('submit', async function (event) {
           event.preventDefault();
           registerFeedback.className = 'register-feedback';
