@@ -233,6 +233,74 @@
       gap: 12px;
     }
 
+    .guest-card {
+      background: linear-gradient(135deg, #081d44 0%, #0b3270 58%, #0a66ff 100%);
+      color: #fff;
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 24px 40px rgba(7, 31, 77, 0.24);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .guest-card::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      right: -70px;
+      top: -70px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(255,255,255,.22) 0%, rgba(255,255,255,0) 72%);
+    }
+
+    .guest-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .guest-label {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,.24);
+      background: rgba(255,255,255,.1);
+    }
+
+    .guest-card h3 {
+      margin: 0 0 8px;
+      font-size: 30px;
+      line-height: 1.02;
+      color: #fff;
+    }
+
+    .guest-role {
+      color: #dbe8ff;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .guest-affiliation {
+      color: #b7cdf6;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .guest-quote {
+      margin: 0;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,.16);
+      color: #f2f7ff;
+      font-size: 18px;
+      line-height: 1.6;
+      font-style: italic;
+    }
+
     .time {
       font-weight: 700;
       color: var(--brand);
@@ -887,6 +955,70 @@
 
       <section>
         <div class="container">
+          <h2>Distinguished Guests</h2>
+          <p class="sub">Special invited guests bringing practical perspective from enterprise AI research and customer intelligence transformation.</p>
+          <div class="grid grid-2">
+            <article class="guest-card">
+              <div class="guest-label">Distinguished Guest</div>
+              <h3>Dr. Yassine Serhane</h3>
+              <div class="guest-role">World Economic Forum Scholar</div>
+              <div class="guest-affiliation">Artificial Intelligence Researcher</div>
+              <p class="guest-quote">“Enterprise AI will not be defined by models alone, but by the systems that allow AI to participate safely in real business decisions.”</p>
+            </article>
+            <article class="guest-card">
+              <div class="guest-label">Distinguished Guest</div>
+              <h3>Rudy Monnier</h3>
+              <div class="guest-role">CRM &amp; CDP APAC Leader</div>
+              <div class="guest-affiliation">VF Corporation</div>
+              <p class="guest-quote">“Customer intelligence is no longer about collecting data, but about turning data into decisions that drive real business outcomes.”</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <h2>Thanks to Industry Leaders</h2>
+          <p class="sub">We appreciate the participation and perspective of leaders across Singapore's retail, hospitality, consumer, leisure, membership, travel, and asset sectors.</p>
+          <div class="grid grid-3">
+            <article class="card">
+              <h3>Hospitality & Travel</h3>
+              <p>Marriott, Hilton, Four Seasons, Millennium, AirAsia</p>
+            </article>
+            <article class="card">
+              <h3>Retail / Luxury</h3>
+              <p>LVMH, VF Corp, DFS, Avolta, JML</p>
+            </article>
+            <article class="card">
+              <h3>Consumer Goods</h3>
+              <p>Heineken, Coca-Cola</p>
+            </article>
+            <article class="card">
+              <h3>Leisure & Attractions</h3>
+              <p>Sentosa Dev Corp, Mount Faber, Rainforest</p>
+            </article>
+            <article class="card">
+              <h3>Food & Beverage</h3>
+              <p>Guzman y Gomez, CHAGEE</p>
+            </article>
+            <article class="card">
+              <h3>Membership Clubs</h3>
+              <p>NTUC Club, Singapore Swimming Club</p>
+            </article>
+            <article class="card">
+              <h3>Travel Services</h3>
+              <p>EU Holidays</p>
+            </article>
+            <article class="card">
+              <h3>Asset / Real Estate</h3>
+              <p>Monopole</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
           <h2>Venue & Contact</h2>
           <div class="card">
             <ul class="list">
@@ -1231,6 +1363,3 @@
   </script>
 </body>
 </html>
-
-
-
