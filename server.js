@@ -138,13 +138,10 @@ app.get('/admin/registrations', (_req, res) => {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Singapore Registrations</title>
+  <title>Registrations</title>
   <style>
     body { font-family: "Segoe UI", sans-serif; margin: 0; background: #f4f7fb; color: #0f1b2d; }
-    .wrap { width: min(1180px, 94vw); margin: 32px auto; }
-    h1 { margin: 0 0 12px; }
-    p { color: #5d6d84; }
-    .meta { margin-bottom: 18px; font-weight: 600; }
+    .wrap { width: min(1180px, 94vw); margin: 20px auto; }
     table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 12px 30px rgba(10,31,68,.08); }
     th, td { padding: 12px 14px; border-bottom: 1px solid #dde5ef; text-align: left; vertical-align: top; font-size: 14px; }
     th { background: #eef4ff; }
@@ -153,8 +150,6 @@ app.get('/admin/registrations', (_req, res) => {
 </head>
 <body>
   <div class="wrap">
-    <h1>Singapore Registrations</h1>
-    <p class="meta">Total registrations: ${rows.length}</p>
     <table>
       <thead>
         <tr>
