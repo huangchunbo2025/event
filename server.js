@@ -167,7 +167,6 @@ app.get('/registration-success.html', (_req, res) => {
     <p>Your registration has been submitted successfully.</p>
     <div class="actions">
       <a href="/">OK</a>
-      <a href="/admin/registrations.html">View Registrations</a>
     </div>
   </div>
 </body>
