@@ -218,6 +218,33 @@
       font-size: 15px;
     }
 
+    .leader-card {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .leader-sector {
+      display: inline-block;
+      align-self: flex-start;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: #eef4fb;
+      color: #6b7b93;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .leader-brands {
+      margin: 0;
+      color: var(--ink);
+      font-size: 24px;
+      line-height: 1.35;
+      font-weight: 800;
+    }
+
     .agenda-list {
       display: grid;
       gap: 12px;
@@ -880,37 +907,37 @@
           <h2>Thanks to Industry Leaders</h2>
           <p class="sub">We appreciate the participation and perspective of leaders across Singapore's retail, hospitality, consumer, leisure, membership, travel, and asset sectors.</p>
           <div class="grid grid-3">
-            <article class="card">
-              <h3>Hospitality & Travel</h3>
-              <p>Marriott, Hilton, Four Seasons, Millennium, AirAsia</p>
+            <article class="card leader-card">
+              <div class="leader-sector">Hospitality &amp; Travel</div>
+              <p class="leader-brands">Marriott, Hilton, Four Seasons, Millennium, AirAsia</p>
             </article>
-            <article class="card">
-              <h3>Retail / Luxury</h3>
-              <p>LVMH, VF Corp, DFS, Avolta, JML</p>
+            <article class="card leader-card">
+              <div class="leader-sector">Retail / Luxury</div>
+              <p class="leader-brands">LVMH, VF Corp, DFS, Avolta, JML</p>
             </article>
-            <article class="card">
-              <h3>Consumer Goods</h3>
-              <p>Heineken, Coca-Cola</p>
+            <article class="card leader-card">
+              <div class="leader-sector">Consumer Goods</div>
+              <p class="leader-brands">Heineken, Coca-Cola</p>
             </article>
-            <article class="card">
-              <h3>Leisure & Attractions</h3>
-              <p>Sentosa Dev Corp, Mount Faber, Rainforest</p>
+            <article class="card leader-card">
+              <div class="leader-sector">Leisure &amp; Attractions</div>
+              <p class="leader-brands">Sentosa Dev Corp, Mount Faber, Rainforest</p>
             </article>
-            <article class="card">
-              <h3>Food & Beverage</h3>
-              <p>Guzman y Gomez, CHAGEE</p>
+            <article class="card leader-card">
+              <div class="leader-sector">Food &amp; Beverage</div>
+              <p class="leader-brands">Guzman y Gomez, CHAGEE</p>
             </article>
-            <article class="card">
-              <h3>Membership Clubs</h3>
-              <p>NTUC Club, Singapore Swimming Club</p>
+            <article class="card leader-card">
+              <div class="leader-sector">Membership Clubs</div>
+              <p class="leader-brands">NTUC Club, Singapore Swimming Club</p>
             </article>
-            <article class="card">
-              <h3>Travel Services</h3>
-              <p>EU Holidays</p>
+            <article class="card leader-card">
+              <div class="leader-sector">Travel Services</div>
+              <p class="leader-brands">EU Holidays</p>
             </article>
-            <article class="card">
-              <h3>Asset / Real Estate</h3>
-              <p>Monopole</p>
+            <article class="card leader-card">
+              <div class="leader-sector">Asset / Real Estate</div>
+              <p class="leader-brands">Monopole</p>
             </article>
           </div>
         </div>
