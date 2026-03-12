@@ -548,15 +548,24 @@
 
     .register-feedback {
       min-height: 20px;
+      padding: 0;
       font-size: 13px;
       color: #eef5ff;
     }
 
     .register-feedback.error {
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(160, 24, 24, 0.28);
+      border: 1px solid rgba(255, 173, 173, 0.34);
       color: #ffd7d7;
     }
 
     .register-feedback.success {
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(18, 120, 66, 0.28);
+      border: 1px solid rgba(169, 255, 204, 0.32);
       color: #d8ffe6;
     }
 
@@ -1644,9 +1653,11 @@
             registerForm.reset();
             registerFeedback.className = 'register-feedback success';
             registerFeedback.textContent = 'Registration submitted successfully.';
+            window.alert('Registration submitted successfully.');
           } catch (error) {
             registerFeedback.className = 'register-feedback error';
             registerFeedback.textContent = error.message || 'Submission failed.';
+            window.alert(registerFeedback.textContent);
           } finally {
             registerSubmit.disabled = false;
           }
