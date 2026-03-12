@@ -918,6 +918,51 @@
     <div id="city-singapore" class="city-panel active">
       <section>
         <div class="container">
+          <div class="banner">
+            <div>
+              <h2 style="margin:0; color:#fff;">Register for Singapore</h2>
+              <p>Approximately 12 seats only. If you are interested, request an invitation and we will confirm availability.</p>
+            </div>
+            <div class="banner-actions">
+              <details class="register-details">
+                <summary class="btn btn-primary">Register Now</summary>
+                <div class="register-panel">
+                  <form class="register-form singapore-register-form">
+                    <input type="hidden" name="city" value="Singapore" />
+                    <div class="register-grid">
+                      <div class="field-group">
+                        <label>First Name
+                          <input name="firstName" type="text" required />
+                        </label>
+                      </div>
+                      <div class="field-group">
+                        <label>Last Name
+                          <input name="lastName" type="text" required />
+                        </label>
+                      </div>
+                    </div>
+                    <div class="field-group">
+                      <label>Company
+                        <input name="company" type="text" required />
+                      </label>
+                    </div>
+                    <div class="field-group">
+                      <label>Email
+                        <input name="email" type="email" required />
+                      </label>
+                    </div>
+                    <button class="btn btn-primary register-submit" type="submit">Submit Registration</button>
+                    <div class="register-feedback" aria-live="polite"></div>
+                  </form>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
           <h2>Private Executive Roundtable</h2>
           <p class="sub">As AI moves beyond experimentation, this closed-door executive session brings together senior leaders across retail and consumer industries to discuss the structural shift from pilots to production-grade AI systems.</p>
           <div class="card">
@@ -1117,31 +1162,35 @@
               <p>Approximately 12 seats only. If you are interested, request an invitation and we will confirm availability.</p>
             </div>
             <div class="banner-actions">
-              <details id="singaporeRegisterDetails" class="register-details">
+              <details class="register-details">
                 <summary class="btn btn-primary">Register Now</summary>
-                <div id="singaporeRegisterPanel" class="register-panel">
-                  <form id="singaporeRegisterForm" class="register-form">
+                <div class="register-panel">
+                  <form class="register-form singapore-register-form">
                     <input type="hidden" name="city" value="Singapore" />
                     <div class="register-grid">
                       <div class="field-group">
-                        <label for="firstName">First Name</label>
-                        <input id="firstName" name="firstName" type="text" required />
+                        <label>First Name
+                          <input name="firstName" type="text" required />
+                        </label>
                       </div>
                       <div class="field-group">
-                        <label for="lastName">Last Name</label>
-                        <input id="lastName" name="lastName" type="text" required />
+                        <label>Last Name
+                          <input name="lastName" type="text" required />
+                        </label>
                       </div>
                     </div>
                     <div class="field-group">
-                      <label for="company">Company</label>
-                      <input id="company" name="company" type="text" required />
+                      <label>Company
+                        <input name="company" type="text" required />
+                      </label>
                     </div>
                     <div class="field-group">
-                      <label for="email">Email</label>
-                      <input id="email" name="email" type="email" required />
+                      <label>Email
+                        <input name="email" type="email" required />
+                      </label>
                     </div>
-                    <button id="singaporeRegisterSubmit" class="btn btn-primary" type="submit">Submit Registration</button>
-                    <div id="singaporeRegisterFeedback" class="register-feedback" aria-live="polite"></div>
+                    <button class="btn btn-primary register-submit" type="submit">Submit Registration</button>
+                    <div class="register-feedback" aria-live="polite"></div>
                   </form>
                 </div>
               </details>
@@ -1560,12 +1609,15 @@
         });
       });
 
-      const registerDetails = document.getElementById('singaporeRegisterDetails');
-      const registerForm = document.getElementById('singaporeRegisterForm');
-      const registerFeedback = document.getElementById('singaporeRegisterFeedback');
-      const registerSubmit = document.getElementById('singaporeRegisterSubmit');
+      const registerForms = document.querySelectorAll('.singapore-register-form');
 
-      if (registerDetails && registerForm && registerFeedback && registerSubmit) {
+      registerForms.forEach((registerForm) => {
+        const registerFeedback = registerForm.querySelector('.register-feedback');
+        const registerSubmit = registerForm.querySelector('.register-submit');
+        if (!registerFeedback || !registerSubmit) {
+          return;
+        }
+
         registerForm.addEventListener('submit', async function (event) {
           event.preventDefault();
           registerFeedback.className = 'register-feedback';
@@ -1599,7 +1651,7 @@
             registerSubmit.disabled = false;
           }
         });
-      }
+      });
     })();
   </script>
 </body>
