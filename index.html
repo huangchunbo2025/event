@@ -484,18 +484,6 @@
       min-width: min(420px, 100%);
     }
 
-    .register-details {
-      width: min(420px, 100%);
-    }
-
-    .register-details summary {
-      list-style: none;
-    }
-
-    .register-details summary::-webkit-details-marker {
-      display: none;
-    }
-
     .register-panel {
       width: min(420px, 100%);
       background: rgba(255, 255, 255, 0.14);
@@ -503,6 +491,8 @@
       border-radius: 18px;
       padding: 18px;
       backdrop-filter: blur(10px);
+      position: relative;
+      z-index: 2;
     }
 
     .register-panel[hidden] {
@@ -724,7 +714,6 @@
         align-items: flex-start;
       }
       .banner-actions,
-      .register-details,
       .register-panel {
         width: 100%;
         min-width: 0;
@@ -970,38 +959,35 @@
               <p>Approximately 12 seats only. If you are interested, request an invitation and we will confirm availability.</p>
             </div>
             <div class="banner-actions">
-              <details class="register-details">
-                <summary class="btn btn-primary">Register Now</summary>
-                <div class="register-panel">
-                  <form class="register-form singapore-register-form" method="post" action="/api/registrations" onsubmit="return false;">
-                    <input type="hidden" name="city" value="Singapore" />
-                    <div class="register-grid">
-                      <div class="field-group">
-                        <label>First Name
-                          <input name="firstName" type="text" required />
-                        </label>
-                      </div>
-                      <div class="field-group">
-                        <label>Last Name
-                          <input name="lastName" type="text" required />
-                        </label>
-                      </div>
-                    </div>
+              <div class="register-panel">
+                <form class="register-form singapore-register-form" method="post" action="/api/registrations" onsubmit="return false;">
+                  <input type="hidden" name="city" value="Singapore" />
+                  <div class="register-grid">
                     <div class="field-group">
-                      <label>Company
-                        <input name="company" type="text" required />
+                      <label>First Name
+                        <input name="firstName" type="text" required />
                       </label>
                     </div>
                     <div class="field-group">
-                      <label>Email
-                        <input name="email" type="email" required />
+                      <label>Last Name
+                        <input name="lastName" type="text" required />
                       </label>
                     </div>
-                    <button class="btn btn-primary register-submit" type="button">Submit Registration</button>
-                    <div class="register-feedback" aria-live="polite"></div>
-                  </form>
-                </div>
-              </details>
+                  </div>
+                  <div class="field-group">
+                    <label>Company
+                      <input name="company" type="text" required />
+                    </label>
+                  </div>
+                  <div class="field-group">
+                    <label>Email
+                      <input name="email" type="email" required />
+                    </label>
+                  </div>
+                  <button class="btn btn-primary register-submit" type="button">Submit Registration</button>
+                  <div class="register-feedback" aria-live="polite"></div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
@@ -1208,38 +1194,35 @@
               <p>Approximately 12 seats only. If you are interested, request an invitation and we will confirm availability.</p>
             </div>
             <div class="banner-actions">
-              <details class="register-details">
-                <summary class="btn btn-primary">Register Now</summary>
-                <div class="register-panel">
-                  <form class="register-form singapore-register-form" method="post" action="/api/registrations" onsubmit="return false;">
-                    <input type="hidden" name="city" value="Singapore" />
-                    <div class="register-grid">
-                      <div class="field-group">
-                        <label>First Name
-                          <input name="firstName" type="text" required />
-                        </label>
-                      </div>
-                      <div class="field-group">
-                        <label>Last Name
-                          <input name="lastName" type="text" required />
-                        </label>
-                      </div>
-                    </div>
+              <div class="register-panel">
+                <form class="register-form singapore-register-form" method="post" action="/api/registrations" onsubmit="return false;">
+                  <input type="hidden" name="city" value="Singapore" />
+                  <div class="register-grid">
                     <div class="field-group">
-                      <label>Company
-                        <input name="company" type="text" required />
+                      <label>First Name
+                        <input name="firstName" type="text" required />
                       </label>
                     </div>
                     <div class="field-group">
-                      <label>Email
-                        <input name="email" type="email" required />
+                      <label>Last Name
+                        <input name="lastName" type="text" required />
                       </label>
                     </div>
-                    <button class="btn btn-primary register-submit" type="button">Submit Registration</button>
-                    <div class="register-feedback" aria-live="polite"></div>
-                  </form>
-                </div>
-              </details>
+                  </div>
+                  <div class="field-group">
+                    <label>Company
+                      <input name="company" type="text" required />
+                    </label>
+                  </div>
+                  <div class="field-group">
+                    <label>Email
+                      <input name="email" type="email" required />
+                    </label>
+                  </div>
+                  <button class="btn btn-primary register-submit" type="button">Submit Registration</button>
+                  <div class="register-feedback" aria-live="polite"></div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
