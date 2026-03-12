@@ -66,34 +66,112 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 app.use(express.static(__dirname, { index: false }));
 
+function getRegistrationPayload(body) {
+  const firstName = String(body.firstName || '').trim();
+  const lastName = String(body.lastName || '').trim();
+  const company = String(body.company || '').trim();
+  const email = String(body.email || '').trim();
+  const city = String(body.city || 'Singapore').trim() || 'Singapore';
+  return { firstName, lastName, company, email, city };
+}
+
+function validateRegistration(payload) {
+  if (!payload.firstName || !payload.lastName || !payload.company || !payload.email) {
+    return 'All fields are required.';
+  }
+
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(payload.email)) {
+    return 'Please enter a valid email address.';
+  }
+
+  return null;
+}
+
+function saveRegistration(payload) {
+  db.run(
+    `INSERT INTO singapore_registrations (first_name, last_name, company, email, city, created_at)
+     VALUES (?, ?, ?, ?, ?, ?)`,
+    [payload.firstName, payload.lastName, payload.company, payload.email, payload.city, new Date().toISOString()]
+  );
+  saveDatabase();
+}
+
 app.get('/health', (_req, res) => {
   res.json({ ok: true });
 });
 
 app.post('/api/registrations', (req, res) => {
-  const firstName = String(req.body.firstName || '').trim();
-  const lastName = String(req.body.lastName || '').trim();
-  const company = String(req.body.company || '').trim();
-  const email = String(req.body.email || '').trim();
-  const city = String(req.body.city || 'Singapore').trim() || 'Singapore';
-
-  if (!firstName || !lastName || !company || !email) {
-    return res.status(400).json({ ok: false, error: 'All fields are required.' });
+  const payload = getRegistrationPayload(req.body);
+  const error = validateRegistration(payload);
+  if (error) {
+    return res.status(400).json({ ok: false, error });
   }
 
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailPattern.test(email)) {
-    return res.status(400).json({ ok: false, error: 'Please enter a valid email address.' });
-  }
-
-  db.run(
-    `INSERT INTO singapore_registrations (first_name, last_name, company, email, city, created_at)
-     VALUES (?, ?, ?, ?, ?, ?)`,
-    [firstName, lastName, company, email, city, new Date().toISOString()]
-  );
-  saveDatabase();
+  saveRegistration(payload);
 
   return res.json({ ok: true });
+});
+
+app.post('/register', (req, res) => {
+  const payload = getRegistrationPayload(req.body);
+  const error = validateRegistration(payload);
+  if (error) {
+    return res.status(400).send(`<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registration Error</title>
+  <style>
+    body { font-family: "Segoe UI", sans-serif; margin: 0; background: #f4f7fb; color: #0f1b2d; display: grid; place-items: center; min-height: 100vh; }
+    .card { width: min(420px, 92vw); background: #fff; border-radius: 20px; padding: 24px; box-shadow: 0 24px 50px rgba(10, 31, 68, 0.18); }
+    h1 { margin: 0 0 10px; font-size: 24px; }
+    p { margin: 0 0 18px; color: #5d6d84; }
+    a { display: inline-block; padding: 12px 18px; border-radius: 12px; background: #0a66ff; color: #fff; text-decoration: none; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Registration Failed</h1>
+    <p>${escapeHtml(error)}</p>
+    <a href="/">Back to Registration</a>
+  </div>
+</body>
+</html>`);
+  }
+
+  saveRegistration(payload);
+  return res.redirect('/registration-success.html');
+});
+
+app.get('/registration-success.html', (_req, res) => {
+  res.send(`<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registration Submitted</title>
+  <style>
+    body { font-family: "Segoe UI", sans-serif; margin: 0; background: #f4f7fb; color: #0f1b2d; display: grid; place-items: center; min-height: 100vh; }
+    .card { width: min(420px, 92vw); background: #fff; border-radius: 20px; padding: 24px; box-shadow: 0 24px 50px rgba(10, 31, 68, 0.18); }
+    h1 { margin: 0 0 10px; font-size: 24px; }
+    p { margin: 0 0 18px; color: #5d6d84; }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    a { display: inline-block; padding: 12px 18px; border-radius: 12px; background: #0a66ff; color: #fff; text-decoration: none; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Registration Submitted</h1>
+    <p>Your registration has been submitted successfully.</p>
+    <div class="actions">
+      <a href="/">OK</a>
+      <a href="/admin/registrations.html">View Registrations</a>
+    </div>
+  </div>
+</body>
+</html>`);
 });
 
 function renderRegistrationsPage(_req, res) {
