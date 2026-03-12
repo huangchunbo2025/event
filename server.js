@@ -22,6 +22,15 @@ function saveDatabase() {
   fs.writeFileSync(dbPath, Buffer.from(data));
 }
 
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 function initSchema() {
   db.run(`
     CREATE TABLE IF NOT EXISTS singapore_registrations (
@@ -85,6 +94,84 @@ app.post('/api/registrations', (req, res) => {
   saveDatabase();
 
   return res.json({ ok: true });
+});
+
+app.get('/admin/registrations', (_req, res) => {
+  const result = db.exec(`
+    SELECT id, first_name, last_name, company, email, city, created_at
+    FROM singapore_registrations
+    ORDER BY id DESC
+  `);
+
+  const rows = result[0]
+    ? result[0].values.map((row) => ({
+        id: row[0],
+        firstName: row[1],
+        lastName: row[2],
+        company: row[3],
+        email: row[4],
+        city: row[5],
+        createdAt: row[6],
+      }))
+    : [];
+
+  const tableRows = rows.length
+    ? rows
+        .map(
+          (row) => `
+            <tr>
+              <td>${escapeHtml(row.id)}</td>
+              <td>${escapeHtml(row.firstName)}</td>
+              <td>${escapeHtml(row.lastName)}</td>
+              <td>${escapeHtml(row.company)}</td>
+              <td>${escapeHtml(row.email)}</td>
+              <td>${escapeHtml(row.city)}</td>
+              <td>${escapeHtml(row.createdAt)}</td>
+            </tr>
+          `
+        )
+        .join('')
+    : '<tr><td colspan="7">No registrations yet.</td></tr>';
+
+  res.send(`<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Singapore Registrations</title>
+  <style>
+    body { font-family: "Segoe UI", sans-serif; margin: 0; background: #f4f7fb; color: #0f1b2d; }
+    .wrap { width: min(1180px, 94vw); margin: 32px auto; }
+    h1 { margin: 0 0 12px; }
+    p { color: #5d6d84; }
+    .meta { margin-bottom: 18px; font-weight: 600; }
+    table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 12px 30px rgba(10,31,68,.08); }
+    th, td { padding: 12px 14px; border-bottom: 1px solid #dde5ef; text-align: left; vertical-align: top; font-size: 14px; }
+    th { background: #eef4ff; }
+    tr:last-child td { border-bottom: none; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Singapore Registrations</h1>
+    <p class="meta">Total registrations: ${rows.length}</p>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Company</th>
+          <th>Email</th>
+          <th>City</th>
+          <th>Submitted At</th>
+        </tr>
+      </thead>
+      <tbody>${tableRows}</tbody>
+    </table>
+  </div>
+</body>
+</html>`);
 });
 
 app.use((_req, res) => {
