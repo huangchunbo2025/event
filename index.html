@@ -969,7 +969,7 @@
               <details class="register-details">
                 <summary class="btn btn-primary">Register Now</summary>
                 <div class="register-panel">
-                  <form class="register-form singapore-register-form">
+                  <form class="register-form singapore-register-form" method="post" action="/api/registrations" onsubmit="return window.handleSingaporeRegistration ? window.handleSingaporeRegistration(event, this) : false;">
                     <input type="hidden" name="city" value="Singapore" />
                     <div class="register-grid">
                       <div class="field-group">
@@ -1207,7 +1207,7 @@
               <details class="register-details">
                 <summary class="btn btn-primary">Register Now</summary>
                 <div class="register-panel">
-                  <form class="register-form singapore-register-form">
+                  <form class="register-form singapore-register-form" method="post" action="/api/registrations" onsubmit="return window.handleSingaporeRegistration ? window.handleSingaporeRegistration(event, this) : false;">
                     <input type="hidden" name="city" value="Singapore" />
                     <div class="register-grid">
                       <div class="field-group">
@@ -1675,51 +1675,52 @@
         });
       });
 
-      const registerForms = document.querySelectorAll('.singapore-register-form');
+      window.handleSingaporeRegistration = async function (event, registerForm) {
+        if (event) {
+          event.preventDefault();
+        }
 
-      registerForms.forEach((registerForm) => {
         const registerFeedback = registerForm.querySelector('.register-feedback');
         const registerSubmit = registerForm.querySelector('.register-submit');
         if (!registerFeedback || !registerSubmit) {
-          return;
+          return false;
         }
 
-        registerForm.addEventListener('submit', async function (event) {
-          event.preventDefault();
-          registerFeedback.className = 'register-feedback';
-          registerFeedback.textContent = 'Submitting...';
-          registerSubmit.disabled = true;
+        registerFeedback.className = 'register-feedback';
+        registerFeedback.textContent = 'Submitting...';
+        registerSubmit.disabled = true;
 
-          const formData = new FormData(registerForm);
-          const payload = Object.fromEntries(formData.entries());
+        const formData = new FormData(registerForm);
+        const payload = Object.fromEntries(formData.entries());
 
-          try {
-            const response = await fetch('/api/registrations', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(payload)
-            });
+        try {
+          const response = await fetch('/api/registrations', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+          });
 
-            const result = await response.json();
-            if (!response.ok || !result.ok) {
-              throw new Error(result.error || 'Submission failed.');
-            }
-
-            registerForm.reset();
-            registerFeedback.className = 'register-feedback success';
-            registerFeedback.textContent = 'Registration submitted successfully.';
-            showRegistrationConfirm('Registration submitted successfully.');
-          } catch (error) {
-            registerFeedback.className = 'register-feedback error';
-            registerFeedback.textContent = error.message || 'Submission failed.';
-            showRegistrationConfirm(registerFeedback.textContent);
-          } finally {
-            registerSubmit.disabled = false;
+          const result = await response.json();
+          if (!response.ok || !result.ok) {
+            throw new Error(result.error || 'Submission failed.');
           }
-        });
-      });
+
+          registerForm.reset();
+          registerFeedback.className = 'register-feedback success';
+          registerFeedback.textContent = 'Registration submitted successfully.';
+          showRegistrationConfirm('Registration submitted successfully.');
+        } catch (error) {
+          registerFeedback.className = 'register-feedback error';
+          registerFeedback.textContent = error.message || 'Submission failed.';
+          showRegistrationConfirm(registerFeedback.textContent);
+        } finally {
+          registerSubmit.disabled = false;
+        }
+
+        return false;
+      };
     })();
   </script>
 </body>
