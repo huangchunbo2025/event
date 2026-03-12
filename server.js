@@ -96,7 +96,7 @@ app.post('/api/registrations', (req, res) => {
   return res.json({ ok: true });
 });
 
-app.get('/admin/registrations', (_req, res) => {
+function renderRegistrationsPage(_req, res) {
   const result = db.exec(`
     SELECT id, first_name, last_name, company, email, city, created_at
     FROM singapore_registrations
@@ -167,7 +167,10 @@ app.get('/admin/registrations', (_req, res) => {
   </div>
 </body>
 </html>`);
-});
+}
+
+app.get('/admin/registrations', renderRegistrationsPage);
+app.get('/admin/registrations.html', renderRegistrationsPage);
 
 app.use((_req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
